@@ -25,7 +25,7 @@ export default function Header({ page, goBack }) {
           fontWeight: "500",
         }}
       >
-        Crawl Generator
+        Crawl Route Generator
       </div>
       <div style={{ width: "fit-content", paddingLeft: "30px" }}>
         {page > 1 && (

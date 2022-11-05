@@ -180,37 +180,38 @@ export default function FinalRoute({ onSubmit }) {
               </IconButton>
             </div>
           </div>
-
-          {routes.map((route, j) => (
-            <div
-              style={{
-                padding: "10px",
-                display: "flex",
-                width: "fit-content",
-                margin: "auto",
-                paddingRight: "100px",
-              }}
-            >
-              {route.map((stop, k) => (
-                <LocationPreview
-                  location={stop}
-                  disableDouble={true}
-                  timeAtStop={getTime(j, k)}
-                  overlapTimes={overlapTimes[j][k]}
-                />
-              ))}
-              <div style={{ position: "absolute", right: 0 }}>
-                <SliderInput
-                  label="Offset Time"
-                  min={0}
-                  max={30}
-                  value={offsetTimes[j]}
-                  setValue={(val) => updateOffset(j, val)}
-                />
+          <div style={{}}>
+            {routes.map((route, j) => (
+              <div
+                style={{
+                  padding: "10px",
+                  display: "flex",
+                  width: "fit-content",
+                  margin: "auto",
+                  paddingRight: "100px",
+                  maxWidth: "calc(100% - 260px)",
+                }}
+              >
+                {route.map((stop, k) => (
+                  <LocationPreview
+                    location={stop}
+                    disableDouble={true}
+                    timeAtStop={getTime(j, k)}
+                    overlapTimes={overlapTimes[j][k]}
+                  />
+                ))}
+                <div style={{ position: "absolute", right: 0 }}>
+                  <SliderInput
+                    label="Offset Time"
+                    min={0}
+                    max={30}
+                    value={offsetTimes[j]}
+                    setValue={(val) => updateOffset(j, val)}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
-          {/* {JSON.stringify(routes)} */}
+            ))}
+          </div>
         </div>
       )}
       <Button

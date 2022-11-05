@@ -11,7 +11,7 @@ import React, { useEffect, useMemo } from "react";
 import { useState } from "react";
 import { createSpreadsheet } from "../utils/spreadsheet";
 
-const COPYRIGHT = "© Ryan Reszetnik";
+// const COPYRIGHT = "";
 
 const styles = StyleSheet.create({
   page: {
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     flexWrap: "wrap",
   },
+
   cell: {
     width: "33%",
     fontSize: "10px",
@@ -32,6 +33,34 @@ const styles = StyleSheet.create({
   cellLarger: {
     width: "30%",
     fontSize: "10px",
+  },
+  cellTitle: {
+    width: "33%",
+    fontSize: "14px",
+    fontWeight: "800",
+  },
+  cellSmallTitle: {
+    width: "15%",
+    fontSize: "14px",
+    fontWeight: "bold",
+  },
+  cellLargerTitle: {
+    width: "30%",
+    fontSize: "14px",
+    fontWeight: "bold",
+  },
+  addressStyle: {
+    fontSize: "14px",
+    color: "#555",
+    fontWeight: "bold",
+    textAlign: "center",
+    width: "100%",
+  },
+  pageTitle: {
+    fontSize: "20px",
+    fontWeight: "bold",
+    textAlign: "center",
+    width: "100%",
   },
   section: {
     margin: 1,
@@ -112,7 +141,7 @@ function GeneratePDF({
         <Document title="Sheets For Teams">
           {spreadSheetRoutes.map((page, index) => (
             <Page size="A4" style={styles.page} key={index}>
-              <Text
+              {/* <Text
                 style={{
                   position: "absolute",
                   left: 30,
@@ -124,17 +153,15 @@ function GeneratePDF({
                 }}
               >
                 {COPYRIGHT}
-              </Text>
+              </Text> */}
               <View style={styles.section}>
-                <Text>Team {index + 1}</Text>
+                <Text style={styles.pageTitle}>Team {index + 1}</Text>
               </View>
               <View style={styles.section}>
-                <Text strokeWidth={5} style={styles.cell}>
-                  Name
-                </Text>
-                <Text style={styles.cellSmall}>Arrive</Text>
-                <Text style={styles.cellSmall}>Departure</Text>
-                <Text style={styles.cell}>Address</Text>
+                <Text style={styles.cellTitle}>Location</Text>
+                <Text style={styles.cellSmallTitle}>Arrive</Text>
+                <Text style={styles.cellSmallTitle}>Departure</Text>
+                <Text style={styles.cellTitle}>Address</Text>
               </View>
               {page.map((loc, locIndex) => (
                 <View style={styles.section}>
@@ -165,7 +192,7 @@ function GeneratePDF({
 
           {spreadSheetStops.map((page, index) => (
             <Page size="A4" style={styles.page} key={index}>
-              <Text
+              {/* <Text
                 style={{
                   position: "absolute",
                   left: 30,
@@ -177,12 +204,16 @@ function GeneratePDF({
                 }}
               >
                 {COPYRIGHT}
-              </Text>
+              </Text> */}
               <View style={styles.section}>
-                <Text>{page.name}</Text>
+                <Text style={styles.pageTitle}>{page.name}</Text>
               </View>
               <View style={styles.section}>
-                <Text>{page.address}</Text>
+                <Text style={styles.addressStyle}>
+                  {page.address
+                    .split(",")
+                    .filter((_, i, a) => i < a.length - 3)}
+                </Text>
               </View>
               <View style={{ display: "flex", flexDirection: "row" }}>
                 {[
@@ -192,12 +223,12 @@ function GeneratePDF({
                 ].map((_, i) => (
                   <View style={styles.halfPageSecion}>
                     <View style={styles.section}>
-                      <Text style={styles.cellLarger}>Team #</Text>
+                      <Text style={styles.cellLargerTitle}>Team #</Text>
                       {(!page.first || !ignoreFirstStop) && (
-                        <Text style={styles.cellLarger}>Arrive</Text>
+                        <Text style={styles.cellLargerTitle}>Arrive</Text>
                       )}
                       {(!page.last || !ignoreLastStop) && (
-                        <Text style={styles.cellLarger}>Departure</Text>
+                        <Text style={styles.cellLargerTitle}>Departure</Text>
                       )}
                     </View>
                     {page.teams
@@ -232,7 +263,7 @@ function GeneratePDF({
           {/*render a single page*/}
 
           <Page size="A4" style={styles.page} orientation="landscape">
-            <Text
+            {/* <Text
               style={{
                 position: "absolute",
                 left: 50,
@@ -244,7 +275,7 @@ function GeneratePDF({
               }}
             >
               {COPYRIGHT}
-            </Text>
+            </Text> */}
             {splitTeamsPerRoute.map((route, index) => (
               <View>
                 <Text

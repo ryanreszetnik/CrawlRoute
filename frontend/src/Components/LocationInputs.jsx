@@ -9,121 +9,11 @@ import { useEffect } from "react";
 import Geocode from "react-geocode";
 import Loading from "./Loading";
 import LocationTable from "./LocationTable";
-const GAPI_KEY = process.env.REACT_APP_GAPI_KEY;
-const sampleLocations = [
-  {
-    location: "Ôfour, Park Avenue, Montreal, QC, Canada",
-    name: "Ôfour",
-    address: "3452 Av du Parc, Montréal, QC H2X 2H5, Canada",
-    lat: 45.5088195,
-    lng: -73.57268479999999,
-    first: false,
-    last: false,
-    food: false,
-    double: false,
-  },
-  {
-    location:
-      "McConnell Engineering Building, Boulevard Robert-Bourassa, Montreal, QC, Canada",
-    name: "McConnell Engineering Building",
-    address: "3380 Blvd Robert-Bourassa, Montréal, QC H2X 2G6, Canada",
-    lat: 45.5060618,
-    lng: -73.57643200000001,
-    first: true,
-    last: false,
-    food: false,
-    double: false,
-  },
-  {
-    name: "Piranha Bar",
-    location: "Piranha Bar, Saint-Catherine Street West, Montreal, QC, Canada",
-    address: "680 Sainte-Catherine O, Montréal, QC H3B 1C2, Canada",
-    lat: 45.5028519,
-    lng: -73.5699419,
-    first: false,
-    last: false,
-    food: false,
-    double: true,
-  },
-  {
-    name: "Bar Tipsy Cow",
-    location: "Bar Tipsy Cow, Park Avenue, Montreal, QC, Canada",
-    address: "3575 Av du Parc, Montréal, QC H2X 3P9, Canada",
-    lat: 45.5106171,
-    lng: -73.575124,
-    first: false,
-    last: false,
-    food: false,
-    double: false,
-  },
-  {
-    name: "Bar Bifteck St-Laurent",
-    location:
-      "Bar Bifteck St-Laurent, Saint Laurent Boulevard, Montreal, QC, Canada",
-    address: "3702 Boul. Saint-Laurent, Montréal, QC H2X 2V4, Canada",
-    lat: 45.5145656,
-    lng: -73.57438499999999,
-    first: false,
-    last: false,
-    food: false,
-    double: false,
-  },
-  {
-    name: "Gert's Bar & Café",
-    location: "Gert's Bar & Café, Mc Tavish Street, Montreal, QC, Canada",
-    address: "3480 Rue McTavish, Montréal, QC H3A 1X9, Canada",
-    lat: 45.5036082,
-    lng: -73.5781314,
-    first: false,
-    last: false,
-    food: false,
-    double: false,
-  },
-  {
-    name: "M4 Burritos Peel",
-    location: "M4 Burritos Peel, Peel Street, Montreal, QC, Canada",
-    address: "2053 Rue Peel, Montréal, QC H3A 1T6, Canada",
-    lat: 45.5014586,
-    lng: -73.5755732,
-    first: false,
-    last: false,
-    food: true,
-    double: false,
-  },
-  {
-    name: "Basha Sherbrooke",
-    location: "Basha Sherbrooke, Sherbrooke Street West, Montreal, QC, Canada",
-    address: "666 Rue Sherbrooke O, Montréal, QC H3A 1E7, Canada",
-    lat: 45.5049667,
-    lng: -73.573189,
-    first: false,
-    last: false,
-    food: false,
-    double: false,
-  },
-  {
-    name: "Brutopia",
-    location: "Brutopia, Crescent Street, Montreal, QC, Canada",
-    address: "Brutopia, Rue Crescent, Montréal, QC H3G 2B1, Canada",
-    lat: 45.4967389,
-    lng: -73.574433,
-    first: false,
-    last: false,
-    food: false,
-    double: false,
-  },
-  {
-    name: "Jet Night Club",
-    location: "Jet Night Club, Crescent Street, Montreal, QC, Canada",
-    address: "2020 Rue Crescent, Montréal, QC H3G 2B8, Canada",
-    lat: 45.4980837,
-    lng: -73.577844,
-    first: false,
-    last: true,
-    food: false,
-    double: false,
-  },
-];
+
+const GAPI_KEY =
+  process.env.NODE_ENV === "development"
+    ? process.env.REACT_APP_GAPI_KEY_DEV
+    : process.env.REACT_APP_GAPI_KEY;
 
 export default function LocationInputs(props) {
   const [places, setPlaces] = useState([]);
@@ -277,6 +167,18 @@ export default function LocationInputs(props) {
             >
               Add Location
             </Button>
+            <div style={{ padding: "10px 150px 20px 150px ", color: "#666" }}>
+              Creating routes for apartment and pub crawls has always been kinda
+              annoying so I thought why not automate it. This crawl generator
+              was made by Ryan Reszetnik so if you have any requests for
+              features or you want anything changed feel free to reach out to me
+              over messanger and I'll do my best to implement them. For small
+              routes this website will get the optimal route for you optimizing
+              for short crawl times and minimal overlap between routes. For
+              larger routes it will only consider the shorter routes so that it
+              finishes the computation in a reasonable time. If you have any
+              questions feel free to reach out!
+            </div>
           </>
         )}
 

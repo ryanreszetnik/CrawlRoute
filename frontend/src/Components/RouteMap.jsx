@@ -5,7 +5,10 @@ import {
   Marker,
   Polyline,
 } from "react-google-maps";
-const GAPI_KEY = process.env.REACT_APP_GAPI_KEY;
+const GAPI_KEY =
+  process.env.NODE_ENV === "development"
+    ? process.env.REACT_APP_GAPI_KEY_DEV
+    : process.env.REACT_APP_GAPI_KEY;
 const colors = ["#ffba6b", "#6bfff5", "#ff6bfd", "#42f572", "#eff542"];
 const MapWithAMarker = withScriptjs(
   withGoogleMap((props) => (
