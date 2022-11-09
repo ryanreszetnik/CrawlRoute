@@ -15,7 +15,7 @@ export default function LocationPreview({
         backgroundColor: location.first
           ? "green"
           : location.last
-          ? "red"
+          ? "orange"
           : "#555",
         color: "white",
         padding: "10px",

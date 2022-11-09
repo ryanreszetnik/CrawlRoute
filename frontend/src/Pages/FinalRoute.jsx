@@ -75,7 +75,7 @@ export default function FinalRoute({ onSubmit }) {
       });
     const extendedCombo = combo[0].map((r) => r.reverse());
     const flatLocations = extendedCombo.flat();
-    // console.log("flat", flatLocations, arriveTimes);
+    console.log("arrive Times", arriveTimes, extendedCombo, combo);
 
     const overlapTimes = arriveTimes.map((r, ri) =>
       r.map((stop, si) => {
@@ -94,7 +94,7 @@ export default function FinalRoute({ onSubmit }) {
               Math.min(stop[1], stop2[1]) - Math.max(stop[0], stop2[0])
             )
           )
-          .filter((t) => t > 0 && si !== 0 && si !== r.length - 1);
+          .filter((t) => t > 0);
         return otherTimes;
       })
     );

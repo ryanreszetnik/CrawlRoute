@@ -11,7 +11,7 @@ import React, { useEffect, useMemo } from "react";
 import { useState } from "react";
 import { createSpreadsheet } from "../utils/spreadsheet";
 
-// const COPYRIGHT = "";
+const COPYRIGHT = "© Ryan Reszetnik";
 
 const styles = StyleSheet.create({
   page: {
@@ -141,19 +141,19 @@ function GeneratePDF({
         <Document title="Sheets For Teams">
           {spreadSheetRoutes.map((page, index) => (
             <Page size="A4" style={styles.page} key={index}>
-              {/* <Text
+              <Text
                 style={{
                   position: "absolute",
                   left: 30,
                   bottom: 30,
-                  color: "#ddd",
+                  color: "#eee",
                   fontSize: "10px",
                   textAlign: "center",
                   width: "108%",
                 }}
               >
                 {COPYRIGHT}
-              </Text> */}
+              </Text>
               <View style={styles.section}>
                 <Text style={styles.pageTitle}>Team {index + 1}</Text>
               </View>
@@ -192,19 +192,19 @@ function GeneratePDF({
 
           {spreadSheetStops.map((page, index) => (
             <Page size="A4" style={styles.page} key={index}>
-              {/* <Text
+              <Text
                 style={{
                   position: "absolute",
                   left: 30,
                   bottom: 30,
-                  color: "#ddd",
+                  color: "#eee",
                   fontSize: "10px",
                   textAlign: "center",
                   width: "108%",
                 }}
               >
                 {COPYRIGHT}
-              </Text> */}
+              </Text>
               <View style={styles.section}>
                 <Text style={styles.pageTitle}>{page.name}</Text>
               </View>
@@ -263,19 +263,19 @@ function GeneratePDF({
           {/*render a single page*/}
 
           <Page size="A4" style={styles.page} orientation="landscape">
-            {/* <Text
+            <Text
               style={{
                 position: "absolute",
                 left: 50,
                 bottom: 30,
-                color: "#ddd",
+                color: "#eee",
                 fontSize: "10px",
                 textAlign: "center",
                 width: "100%",
               }}
             >
               {COPYRIGHT}
-            </Text> */}
+            </Text>
             {splitTeamsPerRoute.map((route, index) => (
               <View>
                 <Text
